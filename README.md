@@ -5,7 +5,7 @@ The [marabou docker image](https://hub.docker.com/r/grese/marabou) is an ubuntu-
 ## Features
 
 * Runs Ubuntu 18.04 (bionic)
-* Based on [https://hub.docker.com/r/jupyter/tensorflow-notebook](jupyter/tensorflow-notebook)
+* Based on [jupyter/tensorflow-notebook](https://hub.docker.com/r/jupyter/tensorflow-notebook)
 * [Jupyter Lab](https://jupyter.org), Python3, Numpy, Tensorflow, Pandas, and other useful pip packages
 * Marabou & Marabou Python APIs installed
 * Standord's [NNet format tools](https://github.com/sisl/NNet) installed
