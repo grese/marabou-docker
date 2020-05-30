@@ -1,4 +1,4 @@
-# Marabou Docker Image
+# Marabou Docker Image ![Build & Push Docker Image](https://github.com/grese/marabou-docker/workflows/Build%20&%20Push%20Docker%20Image/badge.svg)
 
 The [marabou docker image](https://hub.docker.com/r/grese/marabou) is an ubuntu-based docker image with the [Marabou Neural Network Verification Framework](https://github.com/NeuralNetworkVerification/Marabou.git) pre-installed. It also contains a few convenience features and dependencies useful for neural network verification.
 
