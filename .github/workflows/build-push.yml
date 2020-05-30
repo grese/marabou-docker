@@ -1,5 +1,4 @@
-name: Docker Image CI
-
+name: Build & Push Docker Image
 on:
   push:
     branches: [ master ]
@@ -7,8 +6,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build -t grese/marabou:latest .
-    - name: Push the Docker image
-      run: docker push grese/marabou
+      - name: Build & Push
+      - uses: docker/build-push-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USER }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+          repository: grese/marabou
+          tags: latest
