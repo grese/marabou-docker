@@ -8,6 +8,8 @@ ARG MARABOU_HOME=/home/${MARABOU_USER}
 ARG MARABOU_PATH=${MARABOU_HOME}/.bin/marabou
 ARG NNET_URL=https://github.com/sisl/NNet/archive/master.zip
 ARG NNET_PATH=${MARABOU_HOME}/.bin/nnet
+ARG CMAKE_VER=3.18.1
+ARG CMAKE_URL=https://github.com/Kitware/CMake/releases/download/v${CMAKE_VER}/cmake-${CMAKE_VER}.tar.gz
 ARG OLD_USER=jovyan
 ARG NB_GROUP=users
 
@@ -32,7 +34,8 @@ USER root
 # Install aptitude dependencies
 RUN export DEBIAN_FRONTEND=noninteractive && apt-get update -y \
     && apt-get install -y build-essential libssl-dev protobuf-compiler libprotoc-dev \
-    && apt-get install -y zsh zip vim wget cmake && apt-get install -y libboost-all-dev python3-dev
+    && apt-get install -y zsh zip vim wget && apt-get install -y python3-dev
+    # && apt-get install -y zsh zip vim wget cmake && apt-get install -y libboost-all-dev python3-dev
 
 # Create and configure user account (TODO: require password for sudo)
 RUN mv /home/${OLD_USER} ${MARABOU_HOME}
@@ -56,6 +59,10 @@ RUN chmod +x /usr/local/bin/startup.sh
 RUN pip install --no-cache-dir --upgrade pip
 RUN pip install --no-cache-dir pybind11 pytest pytest-cov codecov plotly
 RUN pip install --no-cache-dir onnx onnxruntime
+
+# Download, decompress, build, and install cmake
+RUN cd /tmp && wget -q -O cmake.tar.gz ${CMAKE_URL} && tar -xf cmake.tar.gz \
+    && cd cmake-${CMAKE_VER} && ./bootstrap && make && make install
 
 # Download, unzip, build, and setup marabou
 RUN cd /tmp && wget -q -O marabou.zip ${MARABOU_URL} && unzip -q marabou.zip \
