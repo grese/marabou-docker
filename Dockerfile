@@ -45,8 +45,10 @@ RUN rm -rf /home/${OLD_USER}
 RUN echo "export PYTHONPATH=\$PYTHONPATH:\$MARABOU_PATH" >> ${MARABOU_HOME}/.bashrc
 RUN echo "export JUPYTER_PATH=\$JUPYTER_PATH:\$MARABOU_PATH" >> ${MARABOU_HOME}/.bashrc
 RUN echo "marabou() { \$MARABOU_PATH/build/Marabou \"\$@\"; }" >> ${MARABOU_HOME}/.bashrc
-# add some settings
-RUN echo "\nc.NotebookApp.terminado_settings={'shell_command':['/bin/zsh']}\n" >> /etc/jupyter/jupyter_notebook_config.py
+# add some settings to jupyter_notebook_config.py
+RUN echo ""  >> /etc/jupyter/jupyter_notebook_config.py
+RUN echo "c.NotebookApp.terminado_settings={'shell_command':['/bin/zsh']}" >> /etc/jupyter/jupyter_notebook_config.py
+RUN echo ""  >> /etc/jupyter/jupyter_notebook_config.py
 
 # make marabou directory and copy folders
 RUN mkdir -p ${MARABOU_HOME}/.bin
