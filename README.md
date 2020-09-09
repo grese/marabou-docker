@@ -24,7 +24,7 @@ You'll need [docker](https://www.docker.com/products/docker-desktop) installed, 
 
 ### Ways to Run Image
 
-The image supports all of the normal docker command line options. Below are a few examples of ways to run the image. Choose the best one for your use-case.
+The image supports all of the normal docker command line options. Below are a few examples of ways to run the image. Choose the best one for your use-case. For detailed instructions on options and environment variables for the docker image, visit [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/).
 
 #### Run the JupyterLab browser app
 
@@ -43,6 +43,18 @@ Once it is running, visit https://localhost:9999?token=TOKEN in your browser (TO
 #### Run as daemon
 
 **%** `docker run -d -p 9999:9999 grese/marabou`
+
+### Environment Variables
+
+Environment variables are available to help you do things like specify the SSL cert, password, and token. A few of the relevant environment variables are listed below. Visit [Jupyter Docker Stacks Notebook Options](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#notebook-options) for additional environment variables and options.
+
+* `SERVER_TOKEN` - specifies the URL token
+* `SERVER_CERTFILE` - specifies path to the SSL cert
+* `SERVER_KEYFILE` - specifies path to file containing web app's password
+
+The example below shows how these command line options can be passed to the image.
+
+`docker run -d -p 9999:9999 -e SERVER_TOKEN=/path/to/token -e SERVER_CERTFILE=/path/to/cert -e SERVER_KEYFILE=/path/to/keyfile grese/marabou`
 
 ### Using Marabou
 
