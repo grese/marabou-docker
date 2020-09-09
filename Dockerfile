@@ -2,7 +2,7 @@
 FROM jupyter/tensorflow-notebook:latest
 
 # Dockerfile arguments
-ARG MARABOU_URL=https://github.com/NeuralNetworkVerification/Marabou/archive/master.zip
+ARG MARABOU_URL=https://github.com/NeuralNetworkVerification/Marabou.git
 ARG MARABOU_USER=marabou
 ARG MARABOU_HOME=/home/${MARABOU_USER}
 ARG MARABOU_PATH=${MARABOU_HOME}/.bin/marabou
@@ -65,8 +65,7 @@ RUN cd /tmp && wget -q -O cmake.tar.gz ${CMAKE_URL} && tar -xf cmake.tar.gz \
     && cd cmake-${CMAKE_VER} && ./bootstrap && make && make install
 
 # Download, unzip, build, and setup marabou
-RUN cd /tmp && wget -q -O marabou.zip ${MARABOU_URL} && unzip -q marabou.zip \
-    && mv Marabou-master ${MARABOU_PATH} && rm -rf marabou.zip
+RUN cd ${MARABOU_HOME} && git clone https://github.com/NeuralNetworkVerification/Marabou.git && mv Marabou ${MARABOU_PATH}
 RUN mkdir -p ${MARABOU_PATH}/build && cd ${MARABOU_PATH}/build && cmake .. -DBUILD_PYTHON=ON && cmake --build .
 
 # Download, unzip, and setup nnet
