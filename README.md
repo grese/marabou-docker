@@ -44,9 +44,13 @@ Once it is running, visit https://localhost:9999?token=TOKEN in your browser (TO
 
 **%** `docker run -d -p 9999:9999 grese/marabou`
 
-#### Kill & remove the docker container
+#### Kill a running container
 
-**%** `docker kill $(docker ps -q --filter ancestor=grese/marabou) && docker rm $(docker ps -aq --filter ancestor=grese/marabou)`
+**%** `docker kill $(docker ps -q --filter ancestor=grese/marabou)`
+
+#### Remove a container
+
+**%** `docker rm $(docker ps -aq --filter ancestor=grese/marabou)`
 
 ### Environment Variables
 
