@@ -52,7 +52,7 @@ Run the Jupyter app with mounted folder running as a daemon
 
 To kill and remove the daemon container:
 
-**%** docker kill $(docker ps -q --filter ancestor=grese/marabou) && docker rm $(docker ps -aq --filter ancestor=grese/marabou)
+**%** `docker kill $(docker ps -q --filter ancestor=grese/marabou) && docker rm $(docker ps -aq --filter ancestor=grese/marabou)`
 
 ### Environment Variables
 
