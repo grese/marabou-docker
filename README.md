@@ -47,9 +47,11 @@ Once it is running, visit https://localhost:9999?token=TOKEN in your browser (TO
 #### Common Development Setup
 
 Run the Jupyter app with mounted folder running as a daemon
+
 **%** `docker run -d -p 9999:9999 -v "$PWD":/home/marabou/work grese/marabou`
 
 To kill and remove the daemon container:
+
 **%** docker kill $(docker ps -q --filter ancestor=grese/marabou) && docker rm $(docker ps -aq --filter ancestor=grese/marabou)
 
 ### Environment Variables
