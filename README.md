@@ -32,7 +32,7 @@ The image supports all of the normal docker command line options. Below are a fe
 
 Once it is running, visit https://localhost:9999?token=TOKEN in your browser (TOKEN will be printed in the console when server starts)
 
-##### Run with a shared folder from your local machine (-v option)
+#### Run with a shared folder from your local machine (-v option)
 
 **%** `docker run -p 9999:9999 -v "$PWD":/home/marabou/work grese/marabou`
 
@@ -44,11 +44,13 @@ Once it is running, visit https://localhost:9999?token=TOKEN in your browser (TO
 
 **%** `docker run -d -p 9999:9999 grese/marabou`
 
-#### Kill a running container
+### Managing, killing, and removing containers
+
+Kill a running container
 
 **%** `docker kill $(docker ps -q --filter ancestor=grese/marabou)`
 
-#### Remove a container
+Remove a container from disk
 
 **%** `docker rm $(docker ps -aq --filter ancestor=grese/marabou)`
 
