@@ -44,6 +44,14 @@ Once it is running, visit https://localhost:9999?token=TOKEN in your browser (TO
 
 **%** `docker run -d -p 9999:9999 grese/marabou`
 
+#### Common Development Setup
+
+Run the Jupyter app with mounted folder running as a daemon
+**%** `docker run -d -p 9999:9999 -v "$PWD":/home/marabou/work grese/marabou`
+
+To kill and remove the daemon container:
+**%** docker kill $(docker ps -q --filter ancestor=grese/marabou) && docker rm $(docker ps -aq --filter ancestor=grese/marabou)
+
 ### Environment Variables
 
 Environment variables are available to help you do things like specify the SSL cert, password, and token. A few of the relevant environment variables are listed below. Visit [Jupyter Docker Stacks Notebook Options](https://jupyter-docker-stacks.readthedocs.io/en/latest/using/common.html#notebook-options) for additional environment variables and options.
