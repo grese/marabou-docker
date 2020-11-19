@@ -44,6 +44,10 @@ Once it is running, visit https://localhost:9999?token=TOKEN in your browser (TO
 
 **%** `docker run -d -p 9999:9999 grese/marabou`
 
+#### Run as daemon with mounted volume
+
+**%** `docker run -d -p 9999:9999 -v "$PWD:/home/grese/marabou" grese/marabou`
+
 ### Managing, killing, and removing containers
 
 Kill a running container
