@@ -12,5 +12,5 @@ jobs:
             dockerfile: Dockerfile
             username: ${{ secrets.DOCKER_USER }}
             password: ${{ secrets.DOCKER_TOKEN }}
-            repository: grese/marabou-docker
+            repository: grese/marabou
             tags: latest
